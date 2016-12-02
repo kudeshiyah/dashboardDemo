@@ -24,7 +24,7 @@ class User
   {
     $users = array(
       array("name" => "Harshit Kudeshiya",
-        "email" => "kudeshiyah@gmail.com",
+        "email" => "superadmin@gmail.com",
         "phone" => "9509415782",
         "address" => "abcd",
         "password" => "1234567",
@@ -32,7 +32,7 @@ class User
         "city" => "all"
       ),
       array("name" => "Ashu Singh",
-        "email" => "ashusingh@gmail.com",
+        "email" => "city1admin@gmail.com",
         "phone" => "9509415782",
         "address" => "abcd",
         "password" => "1234567",
