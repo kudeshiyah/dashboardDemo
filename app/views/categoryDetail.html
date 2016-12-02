@@ -1,0 +1,102 @@
+<div>
+	
+		<md-tabs md-dynamic-height md-border-bottom flex>
+			<md-tab label='Sub Categories' style='overflow:hidden;'>
+				<div class='container'>
+			        <div layout="row">
+			            <p>SubCategory: </p>
+			            <div flex-offset='5' flex='50' style="margin-top: 10px;">
+			                <md-input-container class="md-block md-custom-input" >
+			                    <label>Serch</label>
+			                    <input name='search' data-ng-model="search">
+			                </md-input-container>
+			            </div>
+			            <span flex></span>
+			            <div>
+			                <md-button class='md-fab md-mini md-primary' ng-click='ctrl.save_new_sub_category()'>
+			                    <md-icon><i class="material-icons">add</i></md-icon>
+			                </md-button>
+			                <md-tooltip md-visible="show" md-direction="bottom">
+			                    Add New Sub Category
+			                </md-tooltip>
+			            </div>
+			        </div>
+			        <table class="table table-hover table-condensed table-bordered">
+			            <thead>
+			                <tr>
+			                    <th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Sub Category ID </a></th>
+			                    <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Sub Category Name</a></th>
+			                    <th><a href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Sub Category Image</a></th>
+			                </tr>
+			            </thead>
+			            <tbody>
+
+			                <tr data-ng-repeat="s in ctrl.subCategorys | filter: search | orderBy:orderByField:reverseSort">
+			                    <td>
+			                        {{ s.subCatId }}
+			                    </td>
+			                    <td>
+			                        {{ s.subCatName }}
+			                    </td>
+			                    <td>
+			                        {{ s.scImage }}
+
+			                    </td>
+			                    <td layout='row' layout-align='space-around center'>
+			                    	<md-icon ng-click='ctrl.sub_category_details($event, s.subCatId)'>
+			                    		<i class="material-icons">description</i>
+			                    	</md-icon>
+			                        <md-icon ng-click='ctrl.edit_sub_category($event, s.subCatId)'>
+			                        	<i class="material-icons">create</i>
+			                        </md-icon>
+			                        <md-icon ng-click="ctrl.remove_sub_category(s.subCatId)" >
+			                                <i class="material-icons">delete sweep</i>
+			                        </md-icon>
+			                    </td>
+			                </tr>
+			            </tbody>
+			        </table>
+		        </div>
+			</md-tab>
+			<md-tab label='Products' style>
+				<div class='container'>
+					<div layout='row' layout-align='start center'>
+				        <p style="margin: 0; color:#666; text-align:center; font-weight:bold; font-size: 24px;">Products in this category</p>
+				        <span flex></span>
+				        <div add-product selected='ctrl.getSelectedProduct(data)'></div>
+				        <p>Total Products: {{ctrl.categoryProducts.length}}</p>
+				    </div>
+				    <table class="table table-hover table-condensed table-bordered">
+				        <thead>
+				            <tr>
+				                <th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Product ID </a></th>
+				                <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a></th>
+				                <th><a href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Product Image</a></th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr data-ng-repeat="product in ctrl.categoryProducts | filter: search | orderBy:orderByField:reverseSort">
+				                <td>
+				                    {{ product.pId }}
+				                </td>
+				                <td>
+				                    {{ product.pName }}
+				                </td>
+				                <td>
+				                    {{ product.pImage }}
+				                </td>
+				                <td layout='row' layout-align='space-around center'>
+				                    <md-icon  class='delete' >
+				                        <a ng-href="" ng-click="ctrl.removeProductFromCategory( product.pId )" >
+				                            <i class="material-icons">delete sweep</i>
+				                        </a>
+				                    </md-icon>
+				                </td>
+				            </tr>
+				        </tbody>
+				    </table>
+			    </div>
+			</md-tab>
+		</md-tabs>
+
+</div>

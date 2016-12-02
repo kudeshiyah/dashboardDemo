@@ -1,0 +1,8 @@
+<md-input-container class="md-inline md-custom-input" flex='grow'>
+    <label>{{label}}r</label>
+    <md-select required name='{{value}}' ng-model="property[value]">
+      <md-optgroup label="select categorys">
+        <md-option ng-repeat='category in selectCategoryCtrl.categorys' ng-value='category.cId' >{{category.cId}}</md-option>
+      </md-optgroup>
+    </md-select>
+</md-input-container>

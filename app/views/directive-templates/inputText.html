@@ -1,0 +1,15 @@
+<!-- <md-input-container class="md-inline md-custom-input" flex='{{size}}' >
+    <label for='{{value}}' >{{label}}</label>
+    <input  required md-no-asterisk="" name="{{value}}" id='{{value}}' data-ng-model="property[value]">
+</md-input-container> -->
+
+<md-input-container class="md-inline md-custom-input" style='width:97%;'>
+    <label class="control-label">{{label}}</label>
+
+    <input ng-if="type==='text'" ng-disabled='{{disabled}}' data-ng-model="property[value]" name='{{value}}' id='{{value}}' type="text" class="form-control"  style='width:100%' ng-required ='{{required}}'>
+
+    <input ng-if="type==='number'" ng-disabled='{{disabled}}' data-ng-model="property[value]" ng-minlength='{{min}}' ng-maxlength='{{max}}' name='{{value}}' id='{{value}}' type="number" class="form-control"  style='width:100%' ng-required ='{{required}}'>
+
+    <input ng-if="type==='date'" ng-disabled='{{disabled}}' data-ng-model="property[value]" name='{{value}}' id='{{value}}' type="date" class="form-control"  style='width:100%' ng-required ='{{required}}'>
+	<div ng-transclude></div>
+</md-input-container>

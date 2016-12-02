@@ -1,0 +1,7 @@
+<div style='margin-left:10px; margin-top:20px;'>
+	<label>{{label}}</label>
+	<input ng-if="multiple === ''" type="file" ngf-select ng-model="property[value]" name='{{value}}' accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFile" ng-required='{{required}}'>
+	
+	<input ng-if="multiple === 'multiple'" type="file" ngf-select ng-model="property[value]" name='{{value}}' accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFile" ng-required='{{required}}' multiple>
+	<div ng-transclude></div>
+</div>

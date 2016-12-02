@@ -1,0 +1,65 @@
+<div>
+  <div layout='column' >
+    <md-progress-linear ng-if='ctrl.page.processing' class='md-warn' md-mode="indeterminate"></md-progress-linear>
+  </div>
+  <div class="container">
+    <div layout="row" layout-align='start center'>
+        <p>Bulk Upload: </p>
+        <div flex-offset='5' flex='50' style="margin-top: 30px;">
+            <md-input-container class="md-block md-custom-input" >
+                <label>Serch File</label>
+                <input name='search' data-ng-model="search">
+            </md-input-container>
+        </div>
+        <span flex></span>
+        <div layout='row'>
+          <md-button class="md-raised md-primary" ng-csv='' filename='sample.csv'
+            csv-header="fields"
+            >Download Sample</md-button>
+          <ng-csv-import content="csv.content"
+            header="csv.header"
+            separator="csv.separator"
+            result="csv.result"
+            accept="csv.accept"
+            callback="csv.callback"
+            filename="csv.filename"></ng-csv-import>
+            <!-- <md-button class="md-raised md-primary"><i class="material-icons">vertical_align_bottom</i>Download</md-button>
+            <md-button class="md-raised md-primary"><i class="material-icons">vertical_align_top</i>Upload</md-button> -->
+        </div>
+    </div>
+    <table ng-cloak class="table table-hover table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th><a ng-href="" ng-click="orderByField='id'; reverseSort = !reverseSort">S. No. </a></th>
+                <th><a ng-href="" ng-click="orderByField='name'; reverseSort = !reverseSort">File Name</a></th>
+                <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Date</a></th>
+                <th><a ng-href="" ng-click="orderByField='phone'; reverseSort = !reverseSort">Time</a></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-cloak data-ng-repeat="file in ctrl.uploads | filter: search | orderBy:orderByField:reverseSort">
+                <td >
+                    {{ $index+1 }}
+                </td>
+                <td>
+                    {{ file.file }}
+                </td>
+                <td>
+                    {{ file.date}}
+                </td>
+                <td>
+                    {{ file.time }}
+                </td>
+                <td layout='row' layout-align='space-around center'>
+                    <md-icon  class='delete'>
+                      <a ng-href="" ng-click="ctrl.remove(file)" >
+                        <i class="material-icons">delete sweep</i>
+                      </a>
+                    </md-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>

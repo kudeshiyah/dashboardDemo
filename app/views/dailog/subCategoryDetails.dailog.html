@@ -1,0 +1,56 @@
+<md-dialog ng-cloak flex='90'>
+  <form class="wrapper form "  name='form' ng-cloak style='background:#fff; border:none;'>
+        <div layout='column' >
+            <md-progress-linear ng-if='newSubCategoryCtrl.form.processing' md-mode="indeterminate"></md-progress-linear>
+        </div>
+    <p style="margin: 20px 0; color:#666; font-weight:bold; font-size: 20px;">
+        Products in Sub Category:- {{ctrl.subCatId}}
+    </p>
+
+    <md-dialog-content>
+					<div layout='row' layout-align='start center'>
+				        <p style="margin: 0; color:#666; text-align:center; font-weight:bold; font-size: 24px;">Products in this category</p>
+				        <span flex></span>
+				        <div add-product selected='ctrl.getSelectedProduct(data)'></div>
+				        <p>Total Products: {{ctrl.products.length}}</p>
+				    </div>
+				    <table flex='70' class="table table-hover table-condensed table-bordered">
+				        <thead>
+				            <tr>
+				                <th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Product ID </a></th>
+				                <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a></th>
+				                <th><a href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Product Image</a></th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr data-ng-repeat="product in ctrl.products | filter: search | orderBy:orderByField:reverseSort">
+				                <td>
+				                    {{ product.pId }}
+				                </td>
+				                <td>
+				                    {{ product.pName }}
+				                </td>
+				                <td>
+				                    {{ product.pImage }}
+				                </td>
+				                <td layout='row' layout-align='space-around center'>
+				                    <md-icon  class='delete' > 
+				                        <a ng-href="" ng-click="ctrl.removeProductFromSubCategory( product.pId )" >
+				                            <i class="material-icons">delete sweep</i>                 
+				                        </a>
+				                    </md-icon>
+				                </td>
+				            </tr>
+				        </tbody>
+				    </table>
+	</md-dialog-content>
+
+    <md-dialog-actions layout="row">
+
+      <span flex></span>
+      <md-button ng-click="ctrl.cancel()">
+       Close
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

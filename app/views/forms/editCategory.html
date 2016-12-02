@@ -1,0 +1,88 @@
+    <div class="container">
+        <div layout='column' layout-align='start'>
+            <div layout='row' layout-align='start center'>
+                <md-button class='md-fab md-primary' href="#/categorys">
+                    <md-icon><i class="material-icons">arrow_back</i></md-icon>
+                    <md-tooltip md-visible="show" md-direction="bottom">
+                        go back
+                    </md-tooltip>
+                </md-button>
+                <p style="margin: 0; color:#666; text-align:center; font-weight:bold; font-size: 24px;">Edit Category
+                <span style='font-size:16px; color:brown; margin-left:20px; font-weight:normal;'>All * fields are manadatory</span></p>
+            </div>
+            <div  md-whiteframe="3" flex style="margin-top: 10px;" >
+                <form class="wrapper form form-inline"  name='form' ng-cloak>
+                    <div class="error" ng-class="ctrl.eform.error">
+                        <p class="error-text"> {{ctrl.eform.errorMsg}} </p>
+                    </div>
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="Basic Details">
+                            <md-content class="md-padding">
+                                <div layout='row' layout-xs='column' style="margin-top: 15px;">
+                                    <md-input-container class="md-inline md-custom-input" >
+                                        <label>* Category Id</label>
+                                        <input disabled required md-no-asterisk="" name="cid" data-ng-model="ctrl.editData.cId">
+                                        <div ng-messages="form.cid.$error">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-inline md-custom-input" flex>
+                                        <label>* Category Name</label>
+                                        <input required md-no-asterisk="" name="name" data-ng-model="ctrl.editData.cName">
+                                        <div ng-messages="form.name.$error">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div layout='row' layout-xs='column'>
+                                    <md-input-container class="md-inline md-custom-input" flex>
+                                        <label>* Text 1</label>
+                                        <input required md-no-asterisk="" name="text1" data-ng-model="ctrl.editData.text1">
+                                        <div ng-messages="form.text1.$error">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-inline md-custom-input" flex>
+                                        <label>* Text 2</label>
+                                        <input required md-no-asterisk="" name="text2" data-ng-model="ctrl.editData.text2">
+                                        <div ng-messages="form.text2.$error">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div layout='row' layout-xs='column'>
+                                    <input-text label='* URL' property='ctrl.editData' value='url' type='text' required='required' size='grow' flex='grow'>
+                                        <div ng-messages="form.url.$error" ng-if="form.url.$dirty || form.$submitted">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </input-text>
+                                    <input-text label='* Priority' property='ctrl.editData' value='priority' type='number' required='true' flex='initial'>
+                                        <div ng-messages="form.priority.$error" ng-if="form.priority.$dirty || form.$submitted">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </input-text>
+                                    <input-text label='Total Products' property='ctrl.editData' value='totalProducts' type='number' required='' flex='initial'>
+                                        <div ng-messages="form.totalProducts.$error" ng-if="form.totalProducts.$dirty || form.$submitted">
+                                            <div ng-message="required">This is required.</div>
+                                        </div>
+                                    </input-text>
+                                </div>
+                                <div layout='row' layout-align='space-between center'>
+                                    <md-input-container class="md-inline md-custom-input" flex>
+                                        <label>Image Name</label>
+                                        <input name="imageName" data-ng-model="ctrl.editData.cImage">
+                                    </md-input-container>
+                                </div>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                <div layout='row' layout-align='space-between center'>
+                    <md-button class="md-raised md-primary" ng-click='ctrl.saveEdit(ctrl.editData)'> <md-icon><i class="material-icons">launch</i></md-icon> Save </md-button>
+                </div>
+                <div layout='column' >
+                        <md-progress-linear ng-if='ctrl.form.processing' md-mode="indeterminate"></md-progress-linear>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,20 @@
+<md-button class='md-raised ' ng-class='addProductCtrl.addProduct.btn' ng-click="addProductCtrl.showSearch()"> 
+    Add Product
+</md-button>
+<div ng-class='addProductCtrl.addProduct.search' layout='row' layout-align='start center'>
+    <md-input-container class='md-inline md-custom-input' >
+        <label for="">Search Product Id</label>
+        <input required name="name" ng-focus='addProductCtrl.showSearchResultDiv()' data-ng-model="addProductCtrl.search.input.result">
+        <div class='search' ng-class='addProductCtrl.search.searchBox.state' style="margin-top: 30px;">
+            <div ng-click='addProductCtrl.selectedProduct(product)' ng-repeat='product in addProductCtrl.products | filter:addProductCtrl.search.input.result'>
+                <div>{{product.pId}}</div>
+            </div>             
+        </div>
+    </md-input-container>
+    <md-button ng-click='addProductCtrl.add(addProductCtrl.selectedProducts)' class='md-raised md-primary'>
+		Add
+	</md-button>
+	<md-button ng-click='addProductCtrl.cancel()' class='md-raised md-primary'>
+		Cancel
+	</md-button>
+</div>

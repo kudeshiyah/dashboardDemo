@@ -1,0 +1,21 @@
+<md-button class='md-raised ' ng-class='addCategoryCtrl.addCategory.btn' ng-click="addCategoryCtrl.showSearch()"> 
+    Add Category
+</md-button>
+
+<div ng-class='addCategoryCtrl.addCategory.search' style="margin-top: 30px; background:#efefef; padding:0 10px;" layout='row' layout-align='start center'>
+	<md-input-container class='md-inline md-custom-input' >
+		<label for="">Search Category Id</label>
+		<input required name="name" ng-focus='addCategoryCtrl.showSearchResultDiv()' data-ng-model="addCategoryCtrl.search.input.result">
+		<div class='search' ng-class='addCategoryCtrl.search.searchBox.state' style="margin-top: 30px;">
+			<div ng-click='addCategoryCtrl.selectedCategory(category)' ng-repeat='category in addCategoryCtrl.categorys | filter:addCategoryCtrl.search.input.result'>
+				<div>{{category.cId}}</div>
+			</div>             
+        </div>
+    </md-input-container>
+	<md-button ng-click='addCategoryCtrl.add()' class='md-raised md-primary'>
+		Add
+	</md-button>
+	<md-button ng-click='addCategoryCtrl.cancel()' class='md-raised md-primary'>
+		Cancel
+	</md-button>
+</div>

@@ -1,0 +1,58 @@
+ <div>
+    <div layout='column' >
+        <md-progress-linear ng-if='ctrl.page.processing' class='md-warn' md-mode="indeterminate"></md-progress-linear>
+    </div>
+    <div class="container">
+        <div layout="row" layout-align='start center'>
+            <p>Orders: </p>
+            <div flex-offset='5' flex='50' style="margin-top: 30px;">
+                <md-input-container class="md-block md-custom-input" >
+                    <label>Serch Orders</label>
+                    <input name='search' data-ng-model="search">
+                </md-input-container>
+            </div>
+        </div>
+        <table ng-cloak class="table table-hover table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th><a ng-href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Order ID </a></th>
+                    <th><a ng-href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Customer Name</a></th>
+                    <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Phone Numbe</a></th>
+                    <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Total Price</a></th>
+                    <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Order Date</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-cloak data-ng-repeat="order in ctrl.orders | filter: search | orderBy:'-oId'">
+                    <td >
+                        {{ order.oId }}
+                    </td>
+                    <td>
+                        {{ order.details.name }}
+                    </td>
+                    <td>
+                        {{ order.details.phoneNumber }}
+                    </td>
+                    <td>
+                        {{ order.totalPrice }}
+                    </td>
+                    <td>
+                        {{ order.date }}
+                    </td>
+                    <td layout='row' layout-align='space-around center'>
+                        <md-icon label='Bill Description'>
+                            <a ng-href="#/bill/{{order.oId}}">
+                                <i class="material-icons">description</i>
+                            </a>
+                            <!-- <a ng-href="" ng-click='ctrl.generate_bill(order.oId)'>
+                                <i class="material-icons">local_printshop</i>
+                            </a> -->
+                        </md-icon>
+                        <!-- <md-icon><a ng-href="#/orderDescription/{{order.oId}}"><i class="material-icons">description</i></a>  </md-icon> -->
+                        <!-- <md-icon  class='delete'> <a ng-href="" ng-click="ctrl.remove(order.oId)" > <i class="material-icons">delete sweep</i> </a> </md-icon> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

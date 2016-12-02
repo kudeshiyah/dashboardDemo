@@ -1,0 +1,47 @@
+<div>
+   <div layout='column' >
+       <md-progress-linear ng-if='ctrl.page.processing' class='md-warn' md-mode="indeterminate"></md-progress-linear>
+   </div>
+   <div class="container">
+       <div layout="row" layout-align='start center'>
+           <p>Querys: </p>
+           <div flex-offset='5' flex='50' style="margin-top: 30px;">
+               <md-input-container class="md-block md-custom-input" >
+                   <label>Serch Querys</label>
+                   <input name='search' data-ng-model="search">
+               </md-input-container>
+           </div>
+
+       </div>
+       <table ng-cloak class="table table-hover table-condensed table-bordered">
+           <thead>
+               <tr>
+                   <th><a ng-href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Customer Name</a></th>
+                   <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Phone Numbe</a></th>
+                   <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Message</a></th>
+                   <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Date</a></th>
+                   <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Time</a></th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr ng-cloak data-ng-repeat="q in ctrl.querys.list | filter: search | orderBy:orderByField:reverseSort">
+                   <td >
+                       {{ q.name }}
+                   </td>
+                   <td>
+                       {{ q.mobile }}
+                   </td>
+                   <td>
+                       {{ q.message }}
+                   </td>
+                   <td>
+                       {{ q.date }}
+                   </td>
+                   <td>
+                       {{ q.time }}
+                   </td>
+               </tr>
+           </tbody>
+       </table>
+   </div>
+</div>

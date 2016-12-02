@@ -1,0 +1,47 @@
+<div layout='column' layout-align='start' class='container'>
+    <div layout='row' layout-align='start center'>
+        <md-button class='md-fab md-primary' href="#/categorys">
+            <md-icon><i class="material-icons">arrow_back</i></md-icon>
+            <md-tooltip md-visible="show" md-direction="bottom">
+                go back
+            </md-tooltip>
+        </md-button>
+        <p style="margin: 0; color:#666; text-align:center; font-weight:bold; font-size: 24px;">Products in this category</p>
+        <span flex></span>
+        <div add-product selected='ctrl.getSelectedProduct(data)'></div>
+        <p>Total Products: {{ctrl.categoryProducts.length}}</p>
+    </div>
+    <table class="table table-hover table-condensed table-bordered">
+        <thead>
+            <tr>
+                <th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Product ID </a></th>
+                <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a></th>
+                <th><a href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Product Image</a></th>
+                <th><a href="" ng-click="orderByField='phone'; reverseSort = !reverseSort">Text</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="product in ctrl.categoryProducts | filter: search | orderBy:orderByField:reverseSort">
+                <td>
+                    {{ product.pId }}
+                </td>
+                <td>
+                    {{ product.pName }}
+                </td>
+                <td>
+                    {{ product.Img }}
+                </td>
+                <td>
+                    {{ product.text1 }}
+                </td>
+                <td layout='row' layout-align='space-around center'>
+                    <md-icon  class='delete' >
+                        <a ng-href="" ng-click="ctrl.removeProductFromCategory( product.pId )" >
+                            <i class="material-icons">delete sweep</i>
+                        </a>
+                    </md-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

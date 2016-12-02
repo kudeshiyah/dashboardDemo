@@ -1,0 +1,48 @@
+<div class="container">
+       <div layout="row" layout-align='start center' style="margin: 20px 0 30px 0;">
+           <p>Reports: </p>
+           <!-- <div flex-offset='5' flex='initial' style="margin-top: 30px;">
+               <md-input-container class="md-block md-custom-input" >
+                   <label>Serch Orders</label>
+                   <input name='search' data-ng-model="search">
+               </md-input-container>
+           </div> -->
+           <div flex='initial'>
+             <md-datepicker ng-model='ctrl.report.firstDate' md-placeholder="First date"></md-datepicker>
+           </div>
+           <div flex='initial'>
+             <md-datepicker ng-model="ctrl.report.lastDate" md-placeholder="Last date"></md-datepicker>
+           </div>
+           <md-button style='margin-left:25px;' class="md-raised md-primary" ng-click='ctrl.show_sale_between_date()'>Generate report </md-button>
+           <span flex></span>
+           <span flex='initial' ng-if='ctrl.report.soldProducts'>Total Orders: {{ctrl.report.orders}}</span>
+           <span flex='initial' flex-offset='5' ng-if='ctrl.report.soldProducts'>Total Sale: {{ctrl.report.sale}}</span>
+
+       </div>
+       <table ng-cloak class="table table-hover table-condensed table-bordered">
+           <thead>
+               <tr>
+                   <th><a ng-href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Product ID </a></th>
+                   <th><a ng-href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a></th>
+                   <th><a ng-href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Size</a></th>
+                   <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Quantity Sold</a></th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr ng-cloak data-ng-repeat="product in ctrl.report.soldProducts | filter: search | orderBy:orderByField:reverseSort">
+                   <td >
+                       {{ product.pId }}
+                   </td>
+                   <td>
+                       {{ product.name }}
+                   </td>
+                   <td>
+                       {{ product.size }}
+                   </td>
+                   <td>
+                       {{ product.qty }}
+                   </td>
+               </tr>
+           </tbody>
+       </table>
+   </div>

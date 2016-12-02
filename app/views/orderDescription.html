@@ -1,0 +1,53 @@
+<div class="container">
+	<!-- <div layout='row' layout-align='space-between center'>
+		<md-button class='md-fab md-primary' href="#/orders">
+            <md-icon><i class="material-icons">arrow_back</i></md-icon>
+            <md-tooltip md-visible="show" md-direction="bottom">
+                go back
+            </md-tooltip>
+        </md-button>
+	</div> -->
+    <div layout='column' layout-wrapped layout-align='start'>
+        <div layout='row'>
+            <div flex='grow'   class='description'><span class="label">Order Id: </span><span class="value"> {{ctrl.order.oId}} </span></div>
+            <div flex='grow'  class='description'><span class="label">Date: </span><span class="value"> {{ctrl.order.date}} </span></div>
+            <div flex='grow'  class='description'><span class="label">Total Amount: </span><span class="value"> {{ctrl.order.totalPrice}} </span></div>
+            <div flex='grow'  class='description'><span class="label">Discount: </span><span class="value"> {{ctrl.order.discount}} </span></div>
+            <div flex='grow'  class='description'><span class="label">Total Products: </span><span class="value"> {{ctrl.order.totalProducts}} </span></div>
+        </div>
+        <div layout='row'>
+            <div flex='grow'  class='description'><span class="label">Username: </span><span class="value"> {{ctrl.order.details.name}} </span></div>
+            <div flex='grow'  class='description'><span class="label">Phone: </span><span class="value"> {{ctrl.order.details.phoneNumber}} </span></div>
+        </div>
+        <div layout='row'>
+            <div flex='grow'  class='description'><span class="label">Address: </span><span class="value"> {{ctrl.order.details.address}} </span></div>
+        </div>
+	</div>
+	<table class="table table-hover table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Product ID </a></th>
+                    <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a></th>
+                    <th><a href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Product Image</a></th>
+                    <th><a href="" ng-click="orderByField='phone'; reverseSort = !reverseSort">Price</a></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr data-ng-repeat="product in ctrl.order.products | filter: search | orderBy:orderByField:reverseSort">
+                    <td>
+                        {{ product.id }}
+                    </td>
+                    <td>
+                        {{ product.pName }}
+                    </td>
+                    <td>
+                        {{ product.pImage }}
+                    </td>
+                    <td>
+                        {{ product.price }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>

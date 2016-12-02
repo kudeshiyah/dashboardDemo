@@ -1,0 +1,53 @@
+<div>
+    <div layout='column' >
+        <md-progress-linear ng-if='ctrl.page.processing' class='md-warn' md-mode="indeterminate"></md-progress-linear>
+    </div>
+    <div class="container">
+        <div layout="row" layout-align='start center'>
+            <p>Categorys: </p>
+            <div flex-offset='5' flex='50' style="margin-top: 30px;">
+                <md-input-container class="md-block md-custom-input" >
+                    <label>Serch Category</label>
+                    <input name='search' data-ng-model="search">
+                </md-input-container>
+            </div>
+            <span flex></span>
+            <div>
+                <md-button class='md-fab md-primary' ng-href="#/addNewategory">
+                    <md-icon><i class="material-icons">add</i></md-icon>
+                </md-button>
+                <md-tooltip md-visible="show" md-direction="bottom">
+                    Insert new Category
+                </md-tooltip>
+            </div>
+        </div>
+        <table ng-cloak class="table table-hover table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th><a ng-href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Category ID </a></th>
+                    <th><a ng-href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Category Name</a></th>
+                    <th><a ng-href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Category Image</a></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-cloak data-ng-repeat="category in ctrl.categorys | filter: search | orderBy:orderByField:reverseSort">
+                    <td >
+                        {{ category.cId }}
+                    </td>
+                    <td>
+                        {{ category.cName }}
+                    </td>
+                    <td>
+                        {{ category.cImage }}
+                    </td>
+                    <td layout='row' layout-align='space-around center'>
+                        <md-icon><a ng-href="#/category/{{category.cId}}"><i class="material-icons">description</i></a>  </md-icon>
+                        <md-icon><a ng-href="#/editCategory/{{category.cId}}"><i class="material-icons">create</i></a>  </md-icon>
+                        <md-icon  class='delete'> <a ng-href="" ng-click="ctrl.remove(category.cId)" > <i class="material-icons">delete sweep</i> </a> </md-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

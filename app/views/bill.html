@@ -1,0 +1,69 @@
+<div>
+  <div layout='column' >
+      <md-progress-linear ng-if='ctrl.order_edit.processing' class='md-warn' md-mode="indeterminate"></md-progress-linear>
+  </div>
+  <div class="container">
+      <div layout='column' layout-wrapped layout-align='start'>
+          <div layout='row'>
+              <div flex='20'   class='description'>
+                <span class="label">Order Id </span>
+                <span class="value"> {{ctrl.order.oId}} </span>
+              </div>
+              <div flex='20'   class='description'>
+                <span class="label">Date </span>
+                <span class="value"><input type="text" ng-blur='ctrl.update_order()' ng-model='ctrl.order.date' name="name" class="edit"> </span>
+              </div>
+              <span flex></span>
+              <md-icon>
+                <i
+                  style="font-size: 36px; left: -20px; position: relative; top: -5px;"
+                  class="material-icons md-36"
+                  ng-click='ctrl.generate_bill(order.oId)'>
+                  local_printshop
+                </i>
+              </md-icon>
+          </div>
+  	</div>
+  	<table class="table table-hover table-condensed table-bordered">
+              <thead>
+                  <tr>
+                      <th><a href="" ng-click="orderByField='id'; reverseSort = !reverseSort">Product ID </a></th>
+                      <th><a href="" ng-click="orderByField='name'; reverseSort = !reverseSort">Product Name</a></th>
+                      <th><a href="" ng-click="orderByField='shopName'; reverseSort = !reverseSort">Product Image</a></th>
+                      <th><a href="" ng-click="orderByField='phone'; reverseSort = !reverseSort">Price</a></th>
+                      <th><a href="" ng-click="orderByField='phone'; reverseSort = !reverseSort">Quantity</a></th>
+                  </tr>
+              </thead>
+              <tbody>
+
+                  <tr data-ng-repeat="product in ctrl.order.products | filter: search | orderBy:orderByField:reverseSort">
+                      <td>
+                          {{ product.id }}
+                      </td>
+                      <td>
+                          {{ product.pName }}
+                      </td>
+                      <td>
+                          {{ product.pImage }}
+                      </td>
+                      <td>
+                          {{ product.price }}
+                      </td>
+                      <td>
+                        <input ng-blur='ctrl.find_total_to_pay(product.qty)' type="number" name="name" ng-model='product.qty' class="edit">
+                      </td>
+                      <td>
+                        <md-icon ng-click='ctrl.remove_product_from_order($index, product.id)'>
+                            <i class="material-icons">delete_sweep</i>
+                        </md-icon>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+
+          <div layout='row'>
+              <div flex='grow'  class='description'><span class="label">Total Amount: </span><span class="value"> {{ctrl.order.totalPrice}} </span></div>
+              <div flex='grow'  class='description'><span class="label">Discount: </span><span class="value"> {{ctrl.order.discount}} </span></div>
+          </div>
+  </div>
+</div>

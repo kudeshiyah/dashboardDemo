@@ -1,0 +1,86 @@
+<md-dialog ng-cloak flex='90'>
+  <form class="wrapper form "  name='form' ng-cloak style='background:#fff; border:none;'>
+        <div layout='column' >
+            <md-progress-linear ng-if='ctrl.form.processing' md-mode="indeterminate"></md-progress-linear>
+        </div>
+        <p style="margin: 20px 0; color:#666; font-weight:bold; font-size: 20px;">
+            Change sub category details
+            <span style='font-size:16px; color:brown; margin-left:20px; font-weight:normal;'>All * fields are manadatory</span>
+        </p>
+        <div class="error" ng-class="ctrl.editSubCategoryForm.error">
+            <p class="error-text"> {{ctrl.editSubCategoryForm.errorMsg}} </p>
+        </div>
+
+    <md-dialog-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label='Basic Details' >
+                <div layout='row' layout-xs='column' style='margin-top:20px;'>
+                    <input-text label='* Sub Category Id' property='ctrl.data' value='subCatId' type='text' required='required' disabled='true' size='grow' flex='grow'>
+                        <div ng-messages="form.subCatId.$error" ng-if="form.subCatId.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </input-text>
+                    <input-text label='* Name' property='ctrl.data' value='subCatName' type='text' required='required' size='grow' flex='grow'>
+                        <div ng-messages="form.subCatName.$error" ng-if="form.subCatName.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </input-text>
+                    <input-text label='Total Products' property='ctrl.data' value='totalProducts' type='number' required='' flex='grow'>
+                        <div ng-messages="form.totalProducts.$error" ng-if="form.totalProducts.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="number">Should be a number.</div>
+                        </div>
+                    </input-text>
+                </div>
+                <div layout='row' layout-xs='column'>
+                    <input-text label='* Text 1' property='ctrl.data' value='text1' type='text' required='required' size='grow' flex='grow'>
+                        <div ng-messages="form.text1.$error" ng-if="form.text1.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </input-text>
+                    <input-text label='* Text 2' property='ctrl.data' value='text2' type='text' required='required' size='grow' flex='grow'>
+                        <div ng-messages="form.text2.$error" ng-if="form.text2.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </input-text>
+                </div>
+                <div layout='row' layout-xs='column'>
+                    <input-text label='* URL' property='ctrl.data' value='url' type='text' required='required' size='grow' flex='grow'>
+                        <div ng-messages="form.url.$error" ng-if="form.url.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </input-text>
+                    <input-text label='Extra Data1' property='ctrl.data' value='extraData1' type='text' required='' flex='grow'>
+                        <div ng-messages="form.extraData1.$error" ng-if="form.extraData1.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </input-text>
+                    <input-text label='Extra Data1' property='ctrl.data' value='extraData2' type='text' required='' flex='grow'>
+                        <div ng-messages="form.extraData2.$error" ng-if="form.extraData2.$dirty || form.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </input-text>
+                </div>
+                <div layout='row' layout-align='space-between center'>
+                    <input-text label='* Image Name' property='ctrl.data' value='scImage' type='text' required='required' size='grow' flex='grow'>
+                        <div ng-messages="form.imageName.$error" ng-if="form.imageName.$dirty || form.$submitted">
+                            <div ng-message="required">Image Name is required.</div>
+                        </div>
+                    </input-text>
+                </div>
+            </md-tab>
+        </md-tabs>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+
+      <span flex></span>
+      <md-button ng-click="ctrl.cancel(ctrl.data)">
+       Cancel
+      </md-button>
+      <md-button ng-click='ctrl.update(ctrl.data)'>
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

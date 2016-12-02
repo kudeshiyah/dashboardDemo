@@ -1,0 +1,11 @@
+    <md-input-container class="md-inline md-custom-input" flex='grow'>
+        <label>{{label}}</label>
+        <md-select required name='{{value}}' ng-model="property[value]">
+          <md-optgroup label="select products">
+            <md-option ng-repeat='product in selectProductCtrl.products | filter:searchTerm' ng-value='product.pId' >{{product.pId}}</md-option>
+          </md-optgroup>
+        </md-select>
+        <div ng-messages="form.products.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
